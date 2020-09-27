@@ -3,10 +3,7 @@ package com.atguigu.rabbitmq;
 import com.atguigu.utils.ConnectionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 
 /**
  * @title: producer
@@ -14,7 +11,7 @@ import java.util.concurrent.TimeoutException;
  * @Date: 2020/9/26 17:18
  */
 public class producer {
-    static final String QUEUE_NAME = "simple_queue";
+    static final String QUEUE_NAME = "work_queue";
 
     public static void main(String[] args) throws Exception {
 
@@ -42,7 +39,7 @@ public class producer {
         //发送 send
         channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
 
-        System.out.println("已经发送的消息" + message);
+        System.out.println("已经发送的消息:" + message);
         //关闭资源
         channel.close();
         connection.close();
